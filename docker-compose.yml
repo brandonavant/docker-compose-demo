@@ -6,12 +6,20 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: root
+      MONGO_INITDB_DATABASE: demo
+    volumes:
+      - ./database/:/docker-entrypoint-initdb.d/:ro
+    ports:
+      - 27017:27017
   api:
     image: node
+    restart: always
     build:
       context: .
     ports:
      - 8080:8080
+    depends_on:
+      - mongo
     environment:
       - SERVER_PORT=8080
-      - DATABASE_CONNECTIONSTRING=mongodb://mongo:
+      - DATABASE_CONNECTIONSTRING=mongodb://root:root@localhost:27017/demo?authSource=admin
