@@ -15,7 +15,7 @@ const Demo = mongoose.model('Demo', new Schema({
 }, { collection: 'demo-collection'}));
 
 // Connect to the MongoDB instance
-mongoose.connect('mongodb://root:root@localhost:27017/demo?authSource=admin');
+mongoose.connect('mongodb://root:root@mongo:27017/demo?authSource=admin');
 
 /**
  * Gets all documents in the "demo-collection" collection.
