@@ -22,4 +22,4 @@ services:
       - mongo
     environment:
       - SERVER_PORT=8080
-      - DATABASE_CONNECTIONSTRING=mongodb://root:root@localhost:27017/demo?authSource=admin
+      - DATABASE_CONNECTIONSTRING=mongodb://root:root@mongo:27017/demo?authSource=admin
